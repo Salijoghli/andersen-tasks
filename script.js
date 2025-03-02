@@ -1,19 +1,12 @@
-// number into binary
-const transform = (number) => {
-  if (number == 0) return 0;
-  let binary = "";
-  let remainder = 0;
-  while (number !== 0) {
-    remainder = number % 2;
-    number = Math.floor(number / 2);
-    binary = remainder + binary;
-  }
-  return binary;
-};
+// TODO:
+// Write a function add that will work like that:
+// add(1,2) 3
+// add(1)(2)  3
 
-const number = document.querySelector("input");
+function add(number1, number2 = undefined) {
+  if (number2 === undefined) return (number) => number1 + number;
+  return number1 + number2;
+}
 
-document.querySelector("form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert(transform(number.value));
-});
+console.log(add(1)(2));
+console.log(add(1, 2));
