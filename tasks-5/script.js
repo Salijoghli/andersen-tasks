@@ -36,4 +36,14 @@ class Stack extends BaseStorage {
     const storage = this._getStorage();
     return storage[storage.length - 1] ?? null;
   }
+
+  static fromIterable(iterable) {
+    if (iterable == null || typeof iterable[Symbol.iterator] !== "function")
+      throw new Error(`${iterable} isn't iterable`);
+    const stack = new Stack();
+    for (const element of iterable) {
+      stack.push(element);
+    }
+    return stack;
+  }
 }
